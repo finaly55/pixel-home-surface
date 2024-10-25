@@ -16,12 +16,12 @@
 export default {
   data() {
     return {
-      text: 'C6',
+      text: "C6",
     };
   },
   computed: {
     pixelText() {
-      return this.text.split('').map((char) => this.convertToPixelArt(char));
+      return this.text.split("").map((char) => this.convertToPixelArt(char));
     },
   },
   methods: {
@@ -45,7 +45,7 @@ export default {
           [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
         ],
       };
-      return pixelArtChars[char.toUpperCase()] || pixelArtChars[' '];
+      return pixelArtChars[char.toUpperCase()] || pixelArtChars[" "];
     },
   },
 };
@@ -54,6 +54,7 @@ export default {
 <style scoped>
 .pixel-art-text {
   display: flex;
+  transform: scale(2); /* Double la taille du texte */
 }
 .char {
   margin: 0 5px;

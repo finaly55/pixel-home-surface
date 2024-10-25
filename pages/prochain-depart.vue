@@ -9,7 +9,7 @@
 import NextBus from "../components/NextBus.vue";
 import PixelArt from "../components/PixelArt.vue";
 import naolibMatrix from "../image-scripts/output/naolibMatrix.json";
-import PixelArtC6 from "@/components/PixelArtC6.vue";
+import PixelArtC6 from "../components/PixelArtC6.vue";
 
 export default {
   components: {
@@ -34,6 +34,6 @@ export default {
   background-color: black;
   margin: 0;
   padding: 0;
-  gap: 100px;
+  gap: 150px;
 }
 </style>

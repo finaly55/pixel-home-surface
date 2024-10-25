@@ -3,7 +3,7 @@
     <!-- Ajout d'un espace -->
     <div v-if="nextBuses && nextBuses.length > 0" class="bus-list">
       <div v-for="(bus, index) in nextBuses" :key="index">
-        <PixelArtText :text="formatNextBusTime(bus)" />
+        <PixelArtText :text="formatNextBusTime(bus)" :class="{ 'large-text': bus.ligne.numLigne === 'C6' }" />
       </div>
     </div>
     <div v-else>
@@ -74,4 +74,5 @@ export default {
 .spacing {
   margin: 20px;
 }
+
 </style>
