@@ -84,7 +84,7 @@ export default {
   margin: 1px;
 }
 .pixel-on {
-  background-color: white;
+  background-color: #b49ec8;
 }
 .pixel-off {
   background-color: black;
