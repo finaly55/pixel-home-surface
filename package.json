@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "convert": "python image-scripts/convert_image_to_matrix.py && node image-scripts/convertImageToMatrix.js"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.3",

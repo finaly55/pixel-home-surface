@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import NextBus from '~/components/NextBus.vue';
-import PixelArt from '~/components/PixelArt.vue';
-import naolibMatrix from '~/image-scripts/output/naolibMatrix.json';
-import PixelArtC6 from '@/components/PixelArtC6.vue';
+import NextBus from "../components/NextBus.vue";
+import PixelArt from "../components/PixelArt.vue";
+import naolibMatrix from "../image-scripts/output/naolibMatrix.json";
+import PixelArtC6 from "@/components/PixelArtC6.vue";
 
 export default {
   components: {
@@ -31,9 +31,9 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: black;
   margin: 0;
   padding: 0;
+  gap: 100px;
 }
 </style>

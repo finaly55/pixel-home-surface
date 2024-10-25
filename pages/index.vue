@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PixelArtClock from '~/components/PixelArtClock.vue';
+import PixelArtClock from "~/components/PixelArtClock.vue";
 
 export default {
   components: {
@@ -14,6 +14,4 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Ajoutez des styles ici si nécessaire */
-</style>
+<style scoped></style>

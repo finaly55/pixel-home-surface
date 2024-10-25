@@ -1,25 +1,20 @@
 <template>
   <div class="next-bus">
-    <PixelArtText text="Prochain" />
-    <div class="spacing"></div>
     <!-- Ajout d'un espace -->
-    <div v-if="nextBus">
-      <div v-if="nextBus.temps">
-        <PixelArtText :text="nextBus.temps.replace('mn', '') + ' minutes'" />
-      </div>
-      <div v-else>
-        <PixelArtText text="Pas de données en temps réel disponibles" />
+    <div v-if="nextBuses && nextBuses.length > 0" class="bus-list">
+      <div v-for="(bus, index) in nextBuses" :key="index">
+        <PixelArtText :text="formatNextBusTime(bus)" />
       </div>
     </div>
     <div v-else>
-      <PixelArtText text="Chargement..." />
+      <PixelArtText text="Pas de données en temps réel disponibles" />
     </div>
   </div>
 </template>
 
 <script>
-import { getNextBus } from '~/api/naolib.js';
-import PixelArtText from '~/components/PixelArtText.vue';
+import { getNextBus } from "~/api/naolib.js";
+import PixelArtText from "~/components/PixelArtText.vue";
 
 export default {
   components: {
@@ -27,7 +22,7 @@ export default {
   },
   data() {
     return {
-      nextBus: null,
+      nextBuses: [], // Changer de nextBus à nextBuses pour stocker un tableau
       intervalId: null,
     };
   },
@@ -36,18 +31,22 @@ export default {
       const data = await getNextBus();
       if (data && data.length > 0) {
         // Filtrer pour obtenir uniquement les bus C6 à destination de Hermeland
-        const hermelandBuses = data.filter(
-          (bus) => bus.ligne.numLigne === 'C6' && bus.terminus === 'Hermeland'
+        this.nextBuses = data.filter(
+          (bus) => bus.ligne.numLigne === "C6" && bus.terminus === "Hermeland"
         );
-        console.log({ hermelandBuses });
-        // Prendre le premier bus disponible
-        this.nextBus = hermelandBuses[0];
+        console.log({ nextBuses: this.nextBuses });
       }
+    },
+    formatNextBusTime(bus) {
+      if (bus.temps === "proche") {
+        return "proche";
+      }
+      return bus.temps.replace("mn", "") + " minutes";
     },
   },
   async mounted() {
     await this.fetchNextBus();
-    this.intervalId = setInterval(this.fetchNextBus, 60000); // Actualiser toutes les minutes
+    this.intervalId = setInterval(this.fetchNextBus, 30000); // Actualiser toutes les minutes
   },
   beforeDestroy() {
     if (this.intervalId) {
@@ -65,7 +64,14 @@ export default {
   text-align: center;
 }
 
+.bus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: flex-end;
+}
+
 .spacing {
-  margin: 20px 0; /* Ajoute un espace vertical entre les éléments */
+  margin: 20px;
 }
 </style>
