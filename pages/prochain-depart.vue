@@ -34,6 +34,6 @@ export default {
   background-color: black;
   margin: 0;
   padding: 0;
-  gap: 150px;
+  gap: 75px;
 }
 </style>
